@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Django consume API</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+
+
+    <!-- <script>
+        // A CSRF token is required when making post requests in Django
+        window.CSRF_TOKEN = "{{ csrf_token }}";
+    </script> -->
+
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+
+            <br><br>
+            <div id="myside"></div>
+            <br><br>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <div id="myHeader" class="header" style="background-color: rgb(177, 194, 177);">
+                <button id="sidebarCollapse">
+                    Toggle FullScreen
+                </button>
+            </div>
+
+            <div id="mydiv" class="container" style="  background-color: rgb(226, 235, 214);">
+            </div>
+            <div style="display:none;text-align: center;" id="loadmore">
+
+                <a style="padding-bottom: 20px;" id="lazyLoadLink" data-user="0" href="0">Load More Photos</a>
+
+            </div>
+
+        </div>
+        <!-- SPINNER -->
+        <div id="loading-overlay2">
+            <div class="spinner"></div>
+
+        </div>
+        <!-- SPINNER -->
+        <div id="loading-overlay">
+            <div class="spinner"></div>
+
+        </div>
+
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
+
+
+    {% load static %}
+    <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'js/info.js' %}"></script>
+    <script src="{% static 'js/posts.js' %}"></script>
+    <script src="{% static 'js/photos.js' %}"></script>
+    <script src="{% static 'js/header.js' %}"></script>
+    <script src="{% static 'js/treeview.js' %}"></script>
+    <script src="{% static 'js/loadmore.js' %}"></script>
+    <script src="{% static 'js/loadphotos.js' %}"></script>
+    <script src="{% static 'js/loadposts.js' %}"></script>
+    <script src="{% static 'js/loadinfo.js' %}"></script>
+    <script src="{% static 'js/populatesidebar.js' %}"></script>
+
+
+    <script>
+        $(document).ready(function () {
+
+            /*-----------------------------------------------
+            Populate the sidebar treeview with the users' names
+            -------------------------------------------------*/
+
+            fPopulateSidebar();
+
+            /*--------------------------------------------------------------------------*/
+
+            //Sidebar scrollbar
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal",
+                scrollInertia: 60,
+            });
+
+            //Toggle FullScreen button
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+            });
+
+
+
+            /*-------------------------------------------------------------------------
+                    Load more data when clicking on the link             
+            --------------------------------------------------------------------------*/
+            fLoadMore();
+
+        });
+
+    </script>
+
+
+    <script>
+        myheader();
+    </script>
+
+
+</body>
+
+</html>

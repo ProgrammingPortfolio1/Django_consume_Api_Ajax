@@ -1,0 +1,128 @@
+
+   .card {
+    margin-bottom: 40px;
+}
+
+
+        .row {
+            display: flex;
+        }
+
+        .row>div {
+            flex: 1;
+           /* background: lightgrey;
+              border: 1px solid grey; */
+        }
+
+        ul,
+        #myUL {
+            list-style-type: none;
+        }
+
+        #myUL {
+            margin: 0;
+            padding: 0;
+        }
+
+        .caret {
+            cursor: pointer;
+            -webkit-user-select: none;
+            /* Safari 3.1+ */
+            -moz-user-select: none;
+            /* Firefox 2+ */
+            -ms-user-select: none;
+            /* IE 10+ */
+            user-select: none;
+        }
+
+        .caret::before {
+            content: "\25B6";
+            color: black;
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        .caret-down::before {
+            -ms-transform: rotate(90deg);
+            /* IE 9 */
+            -webkit-transform: rotate(90deg);
+            /* Safari */
+            transform: rotate(90deg);
+        }
+
+        .nested {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #dfe094;
+    color: rgb(20, 3, 3);
+/*     transition: all 0.3s;
+ */}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: calc(100% - 250px);
+    padding: 10px;
+    min-height: 100vh;
+/*     transition: all 0.3s;
+ */    position: relative;
+    top: 0;
+    right: 0;
+}
+
+#content.active {
+    width: 100%;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #content {
+        width: 100%;
+    }
+    #content.active {
+        width: calc(100% - 250px);
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+}
